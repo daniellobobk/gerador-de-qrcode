@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>gerador de qr code</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+   <div class="bloco">
+        <h1>GERADOR DE QR CODE</h1>
+        <form>
+            <div id="text" >
+           <label for="qr-text" > Insira o seu link para converter em qr code</label>
+             </div>
+            <br>
+            <div id="formulario" >
+            <input type="text" id="qr-text" placeholder="https://">
+            </div>
+            <br>
+            <div class="botao">
+            <button type="button" id="generate-btn">Gerar QR CODE</button>
+            
+        </div>
+        </form> 
+        <br><br>
+        <div class="qrcode">
+        <div id="qr-code"><strong> qr code aparecerá aqui</strong></div>
+    </div>
+   </div>
+   <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
+   <script>
+    const generatebtn = document.querySelector("#generate-btn");
+    const qrcodediv = document.querySelector("#qr-code");
+
+    generatebtn.addEventListener("click", () => {
+        const qrtext = document.querySelector("#qr-text").value;
+
+        if (qrtext) {
+            qrcodediv.innerHTML = "";
+            const qrcode = new QRCode(qrcodediv, qrtext);
+        }
+    });
+   </script>
+</body>
+</html>
